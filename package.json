@@ -1,6 +1,6 @@
 {
   "name": "aurelia-star-rate",
-  "version": "0.7.6",
+  "version": "1.0.0",
   "description": "A plugin to use bootstrap for creating star rating controls",
   "keywords": [
     "aurelia",
