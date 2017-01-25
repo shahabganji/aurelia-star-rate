@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "./StarRateClicked"], function (require, exports, aurelia_framework_1, StarRateClicked_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-event-aggregator", "./StarRateClicked"], function (require, exports, aurelia_framework_1, aurelia_event_aggregator_1, StarRateClicked_1) {
     var StarRate = (function () {
         function StarRate(ea) {
             this.ea = ea;
@@ -57,6 +57,10 @@ define(["require", "exports", "aurelia-framework", "./StarRateClicked"], functio
         aurelia_framework_1.bindable,
         __metadata("design:type", String)
     ], StarRate.prototype, "color", void 0);
+    StarRate = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [aurelia_event_aggregator_1.EventAggregator])
+    ], StarRate);
     exports.StarRate = StarRate;
 });
 

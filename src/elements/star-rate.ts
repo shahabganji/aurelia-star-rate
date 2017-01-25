@@ -1,8 +1,10 @@
 
 
-import { bindable, bindingMode } from 'aurelia-framework';
+import { bindable, bindingMode, autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { StarRateClicked } from './StarRateClicked';
+
+@autoinject
 export class StarRate {
 
   @bindable({ defaultBindingMode: bindingMode.twoWay }) rate: number;

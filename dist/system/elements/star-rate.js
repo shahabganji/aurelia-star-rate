@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "./StarRateClicked"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "aurelia-event-aggregator", "./StarRateClicked"], function (exports_1, context_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,11 +9,14 @@ System.register(["aurelia-framework", "./StarRateClicked"], function (exports_1,
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, StarRateClicked_1, StarRate;
+    var aurelia_framework_1, aurelia_event_aggregator_1, StarRateClicked_1, StarRate;
     return {
         setters: [
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (aurelia_event_aggregator_1_1) {
+                aurelia_event_aggregator_1 = aurelia_event_aggregator_1_1;
             },
             function (StarRateClicked_1_1) {
                 StarRateClicked_1 = StarRateClicked_1_1;
@@ -69,6 +72,10 @@ System.register(["aurelia-framework", "./StarRateClicked"], function (exports_1,
                 aurelia_framework_1.bindable,
                 __metadata("design:type", String)
             ], StarRate.prototype, "color", void 0);
+            StarRate = __decorate([
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [aurelia_event_aggregator_1.EventAggregator])
+            ], StarRate);
             exports_1("StarRate", StarRate);
         }
     };

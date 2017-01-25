@@ -8,6 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var aurelia_framework_1 = require("aurelia-framework");
+var aurelia_event_aggregator_1 = require("aurelia-event-aggregator");
 var StarRateClicked_1 = require("./StarRateClicked");
 var StarRate = (function () {
     function StarRate(ea) {
@@ -58,6 +59,10 @@ __decorate([
     aurelia_framework_1.bindable,
     __metadata("design:type", String)
 ], StarRate.prototype, "color", void 0);
+StarRate = __decorate([
+    aurelia_framework_1.autoinject,
+    __metadata("design:paramtypes", [aurelia_event_aggregator_1.EventAggregator])
+], StarRate);
 exports.StarRate = StarRate;
 
 //# sourceMappingURL=star-rate.js.map
