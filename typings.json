@@ -1,6 +1,6 @@
 {
-  "name": "aurelia-skeleton-plugin-typescript",
-  "main": "dist/amd/index.d.ts",
+  "name": "aurelia-star-rate",
+  "main": "dist/amd/aurelia-star-rate",
   "dependencies": {
     "aurelia-binding": "github:aurelia/binding",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper",
