@@ -50,6 +50,7 @@
   },
   "jspm": {
     "registry": "npm",
+    "jspmPackage": true,
     "main": "aurelia-star-rate",
     "format": "amd",
     "directories": {
@@ -57,7 +58,7 @@
     },
     "dependencies": {
       "aurelia-framework": "^1.0.8",
-      "aurelia-event-aggregator" : "^1.0.0" ,
+      "aurelia-event-aggregator": "^1.0.0",
       "bootstrap": "^3.0.0",
       "jquery": "^3.0.0"
     },
@@ -65,7 +66,7 @@
   },
   "dependencies": {
     "aurelia-framework": "^1.0.8",
-    "aurelia-event-aggregator" : "^1.0.0" ,
+    "aurelia-event-aggregator": "^1.0.0",
     "bootstrap": "^3.0.0",
     "jquery": "^3.0.0"
   }
