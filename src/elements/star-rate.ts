@@ -1,7 +1,8 @@
 
 
 import { bindable, bindingMode } from 'aurelia-framework';
-
+import { EventAggregator } from 'aurelia-event-aggregator';
+import { StarRateClicked } from './StarRateClicked';
 export class StarRate {
 
   @bindable({ defaultBindingMode: bindingMode.twoWay }) rate: number;
@@ -9,8 +10,12 @@ export class StarRate {
   @bindable readOnly: boolean = true;
   @bindable color: string = 'Black';
 
-
   private mouseRate: number = -1;
+
+  constructor(private ea: EventAggregator) {
+  }
+
+
 
   mouseEnter(value: number) {
 
@@ -31,6 +36,8 @@ export class StarRate {
       return;
     }
     this.rate = value + 1;
+
+    this.ea.publish(new StarRateClicked(this.rate, value));
   }
 
   mouseLeft() {

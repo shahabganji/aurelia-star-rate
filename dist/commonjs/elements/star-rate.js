@@ -8,8 +8,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var aurelia_framework_1 = require("aurelia-framework");
+var StarRateClicked_1 = require("./StarRateClicked");
 var StarRate = (function () {
-    function StarRate() {
+    function StarRate(ea) {
+        this.ea = ea;
         this.readOnly = true;
         this.color = 'Black';
         this.mouseRate = -1;
@@ -30,6 +32,7 @@ var StarRate = (function () {
             return;
         }
         this.rate = value + 1;
+        this.ea.publish(new StarRateClicked_1.StarRateClicked(this.rate, value));
     };
     StarRate.prototype.mouseLeft = function () {
         if (this.readOnly) {
