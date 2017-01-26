@@ -1,5 +1,6 @@
+import { StarRate } from './../../src/elements/star-rate';
 // import {computedFrom} from 'aurelia-framework';
-import {HelloWorld} from 'aurelia-skeleton-plugin-typescript';
+
 
 export class Welcome {
   public heading = 'Welcome to the Aurelia Navigation App!';

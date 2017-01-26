@@ -1,11 +1,11 @@
-import 'bootstrap';
 import {Aurelia} from 'aurelia-framework';
+import 'bootstrap';
 
 export function configure(aurelia: Aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin("aurelia-skeleton-plugin-typescript");
+    .plugin('aurelia-star-rate');
 
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin('aurelia-animator-css');

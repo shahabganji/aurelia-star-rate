@@ -18,6 +18,7 @@ System.config({
   map: {
     "aurelia-animator-css": "npm:aurelia-animator-css@1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0",
+    "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.6",
     "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0",
@@ -71,7 +72,7 @@ System.config({
       "aurelia-task-queue": "npm:aurelia-task-queue@1.1.0"
     },
     "npm:aurelia-bootstrapper@1.0.0": {
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
       "aurelia-framework": "npm:aurelia-framework@1.0.6",
       "aurelia-history": "npm:aurelia-history@1.0.0",
       "aurelia-history-browser": "npm:aurelia-history-browser@1.0.0",
@@ -90,7 +91,7 @@ System.config({
       "aurelia-metadata": "npm:aurelia-metadata@1.0.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0"
     },
-    "npm:aurelia-event-aggregator@1.0.0": {
+    "npm:aurelia-event-aggregator@1.0.1": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0"
     },
     "npm:aurelia-framework@1.0.6": {
@@ -134,7 +135,7 @@ System.config({
     },
     "npm:aurelia-router@1.0.6": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.1.0",
-      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.1",
       "aurelia-history": "npm:aurelia-history@1.0.0",
       "aurelia-logging": "npm:aurelia-logging@1.0.0",
       "aurelia-path": "npm:aurelia-path@1.1.1",

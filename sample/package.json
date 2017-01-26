@@ -1,5 +1,5 @@
 {
-  "name": "aurelia-skeleton-navigation-typescript",
+  "name": "aurelia-star-rate",
   "version": "1.0.3",
   "description": "A starter kit for building a standard navigation-style app with Aurelia and TypeScript.",
   "keywords": [
@@ -57,6 +57,7 @@
     "dependencies": {
       "aurelia-animator-css": "npm:aurelia-animator-css@^1.0.1",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^2.0.1",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@^1.0.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.1.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.8",
       "aurelia-history-browser": "npm:aurelia-history-browser@^1.0.0",
