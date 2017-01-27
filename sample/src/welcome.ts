@@ -1,12 +1,25 @@
-import { StarRate } from './../../src/elements/star-rate';
+import { autoinject } from 'aurelia-framework';
+// import { StarRateClicked } from './../../src/elements/StarRateClicked';
+
 // import {computedFrom} from 'aurelia-framework';
 
 
+import { EventAggregator } from 'aurelia-event-aggregator';
+import { StarRateClicked } from 'aurelia-star-rate';
+
+@autoinject
 export class Welcome {
   public heading = 'Welcome to the Aurelia Navigation App!';
   public firstName = 'John';
   public lastName = 'Doe';
   private previousValue = this.fullName;
+
+  /**
+   *
+   */
+  constructor(ea: EventAggregator) {
+    ea.subscribe(StarRateClicked, x => alert(x.newRate));
+  }
 
   // Getters can't be directly observed, so they must be dirty checked.
   // However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
