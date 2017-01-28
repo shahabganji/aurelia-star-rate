@@ -5,6 +5,7 @@ export declare class StarRate {
     maxRate: number;
     readOnly: boolean;
     color: string;
+    clicked: any;
     private mouseRate;
     constructor(ea: EventAggregator);
     mouseEnter(value: number): void;

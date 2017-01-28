@@ -1,5 +1,4 @@
 
-
 import { bindable, bindingMode, autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { StarRateClicked } from './StarRateClicked';
@@ -12,11 +11,9 @@ export class StarRate {
   @bindable readOnly: boolean = true;
   @bindable color: string = 'Black';
 
-  private mouseRate: number = -1;
+  @bindable clicked;
 
-  @bindable
-  // tslint:disable-next-line:no-empty
-  clicked;// = (newRate: number, oldRate: number) => { };
+  private mouseRate: number = -1;
 
   constructor(private ea: EventAggregator) {
   }

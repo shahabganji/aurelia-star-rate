@@ -46,6 +46,9 @@ System.register(["aurelia-framework", "aurelia-event-aggregator", "./StarRateCli
                         return;
                     }
                     this.rate = value + 1;
+                    if (this.clicked) {
+                        this.clicked({ newRate: this.rate, oldRate: value });
+                    }
                     this.ea.publish(new StarRateClicked_1.StarRateClicked(this.rate, value));
                 };
                 StarRate.prototype.mouseLeft = function () {
@@ -72,6 +75,10 @@ System.register(["aurelia-framework", "aurelia-event-aggregator", "./StarRateCli
                 aurelia_framework_1.bindable,
                 __metadata("design:type", String)
             ], StarRate.prototype, "color", void 0);
+            __decorate([
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
+            ], StarRate.prototype, "clicked", void 0);
             StarRate = __decorate([
                 aurelia_framework_1.autoinject,
                 __metadata("design:paramtypes", [aurelia_event_aggregator_1.EventAggregator])
