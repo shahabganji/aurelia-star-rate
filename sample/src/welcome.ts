@@ -1,8 +1,4 @@
-import { autoinject } from 'aurelia-framework';
-// import { StarRateClicked } from './../../src/elements/StarRateClicked';
-
-// import {computedFrom} from 'aurelia-framework';
-
+import { autoinject, computedFrom } from 'aurelia-framework';
 
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { StarRateClicked } from 'aurelia-star-rate';
@@ -14,18 +10,13 @@ export class Welcome {
   public lastName = 'Doe';
   private previousValue = this.fullName;
 
-  /**
-   *
-   */
   constructor(ea: EventAggregator) {
-    ea.subscribe(StarRateClicked, x => alert(x.newRate));
+    // tslint:disable-next-line:no-console
+    ea.subscribe(StarRateClicked, x => console.info(`E.Aggregator : Rate changed from  ${x.oldRate} to ${x.newRate}`));
   }
 
-  // Getters can't be directly observed, so they must be dirty checked.
-  // However, if you tell Aurelia the dependencies, it no longer needs to dirty check the property.
-  // To optimize by declaring the properties that this getter is computed from, uncomment the line below
-  // as well as the corresponding import above.
-  // @computedFrom('firstName', 'lastName')
+
+  @computedFrom('firstName', 'lastName')
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
@@ -40,8 +31,15 @@ export class Welcome {
       return confirm('Are you sure you want to leave?');
     }
   }
+
+  // tslint:disable-next-line:no-empty
+  private star_clicked(newRate, oldRate) {
+    // tslint:disable-next-line:no-console
+    console.info(`clicked: Rate changed from  ${oldRate} to ${newRate}`);
+  }
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class UpperValueConverter {
   public toView(value) {
     return value && value.toUpperCase();

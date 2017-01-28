@@ -50,15 +50,14 @@
   },
   "jspm": {
     "registry": "npm",
-    "jspmPackage": true,
     "main": "aurelia-star-rate",
     "format": "amd",
     "directories": {
       "dist": "dist/amd"
     },
     "dependencies": {
-      "aurelia-framework": "^1.0.8",
       "aurelia-event-aggregator": "^1.0.0",
+      "aurelia-framework": "^1.0.8",
       "bootstrap": "^3.0.0",
       "jquery": "^3.0.0"
     },

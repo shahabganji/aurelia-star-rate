@@ -2,6 +2,7 @@
   <section class="au-animate">
     <star-rate max-rate.bind="5" rate.bind="3" color="gray"></star-rate>
     <hr />
-    <star-rate max-rate.bind="8" rate.bind="3" read-only.bind="false" color="darkgoldenrod"></star-rate>
+    <star-rate clicked.call="star_clicked(newRate,oldRate)" max-rate.bind="8" 
+    rate.one-way="6" read-only.bind="false" color="darkgoldenrod"></star-rate>
   </section>
 </template>

@@ -14,6 +14,10 @@ export class StarRate {
 
   private mouseRate: number = -1;
 
+  @bindable
+  // tslint:disable-next-line:no-empty
+  clicked;// = (newRate: number, oldRate: number) => { };
+
   constructor(private ea: EventAggregator) {
   }
 
@@ -39,6 +43,7 @@ export class StarRate {
     }
     this.rate = value + 1;
 
+    if (this.clicked) { this.clicked({ newRate: this.rate, oldRate: value }); }
     this.ea.publish(new StarRateClicked(this.rate, value));
   }
 
