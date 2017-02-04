@@ -67,7 +67,7 @@
 
 # 2. Usage
 
-  ## Simple
+## Simple
 
 Using the control in your .html files is so simple ;-)
 
