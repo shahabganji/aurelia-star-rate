@@ -1,9 +1,10 @@
-System.register(["./elements/StarRateClicked"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "./elements/StarRateClicked"], function (exports_1, context_1) {
     var __moduleName = context_1 && context_1.id;
     function configure(config) {
-        config.globalResources('./elements/star-rate');
+        config.globalResources(aurelia_framework_1.PLATFORM.moduleName('./elements/star-rate'));
     }
     exports_1("configure", configure);
+    var aurelia_framework_1;
     var exportedNames_1 = {
         "configure": true
     };
@@ -16,6 +17,9 @@ System.register(["./elements/StarRateClicked"], function (exports_1, context_1) 
     }
     return {
         setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            },
             function (StarRateClicked_1_1) {
                 exportStar_1(StarRateClicked_1_1);
             }
