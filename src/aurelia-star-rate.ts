@@ -1,10 +1,10 @@
 
-import { FrameworkConfiguration } from 'aurelia-framework';
+import { FrameworkConfiguration, PLATFORM } from 'aurelia-framework';
 
 
 
 export function configure(config: FrameworkConfiguration) {
-  config.globalResources('./elements/star-rate');
+  config.globalResources(PLATFORM.moduleName('./elements/star-rate'));
 }
 
 
