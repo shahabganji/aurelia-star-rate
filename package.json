@@ -1,6 +1,6 @@
 {
   "name": "aurelia-star-rate",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A plugin to use bootstrap for creating star rating controls",
   "keywords": [
     "aurelia",
@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/shahabganji/aurelia-star-rate/issues"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "Saeed Ganji (Shahab) <shahabganji@gmail.com>",
   "main": "dist/amd/aurelia-star-rate.js",
   "repository": {
@@ -58,15 +58,13 @@
     "dependencies": {
       "aurelia-event-aggregator": "^1.0.0",
       "aurelia-framework": "^1.0.8",
-      "bootstrap": "^3.0.0",
-      "jquery": "^3.0.0"
+      "bootstrap": "^3.0.0"
     },
     "devDependencies": {}
   },
   "dependencies": {
     "aurelia-framework": "^1.0.8",
     "aurelia-event-aggregator": "^1.0.0",
-    "bootstrap": "^3.0.0",
-    "jquery": "^3.0.0"
+    "bootstrap": "^3.0.0"
   }
 }
