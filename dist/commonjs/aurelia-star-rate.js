@@ -6,6 +6,7 @@ function configure(config) {
     config.globalResources(aurelia_framework_1.PLATFORM.moduleName('./elements/star-rate'));
 }
 exports.configure = configure;
+__export(require("./elements/star-rate"));
 __export(require("./elements/StarRateClicked"));
 
 //# sourceMappingURL=aurelia-star-rate.js.map

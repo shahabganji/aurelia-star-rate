@@ -1,10 +1,23 @@
-<template css="cursor:${readOnly === true ? 'auto' : 'pointer'}; color:${color}" mouseleave.trigger="mouseLeft()" 
->
+<template css="cursor:${readOnly === true ? 'auto' : 'pointer'}; color:${color};" mouseleave.trigger="mouseLeft()">
 
-    <span class="glyphicon 
-    ${( (mouseRate === -1 && r < rate) || ( mouseRate > -1 && r < mouseRate ) ) ? 'glyphicon-star' : 'glyphicon-star-empty'}"
-        repeat.for="r of maxRate" mouseover.delegate="mouseEnter(r)" click.delegate="setRate(r)">
-    </span>
-    
+    <require from="./star-rate.css"></require>
+
+
+    <i if.bind="!rtl" 
+        class="${$index > fixedPoint ? emptyStar : $index < fixedPoint ? fullStar : ( ( showHalfStar || hasFloatingPoint ) && halfStar && fixedPoint == $index ) ? halfStar : emptyStar}" 
+        repeat.for="$index of maxRate" 
+        
+        mousemove.delegate="mouseMove($event,$index)"
+            click.delegate="setRate($index)">
+    </i>
+
+
+    <i if.bind="rtl" class="au-star-rtl ${maxRate-$index-1 > fixedPoint ? emptyStar : maxRate-$index-1 < fixedPoint ? fullStar : ( ( showHalfStar || hasFloatingPoint ) && halfStar && fixedPoint == maxRate-$index-1 ) ? halfStar : emptyStar}"
+         repeat.for="$index of maxRate"
+          
+          mousemove.delegate="mouseMove($event,maxRate-$index-1)"
+        click.delegate="setRate(maxRate-$index-1)">
+    </i>
+
 
 </template>

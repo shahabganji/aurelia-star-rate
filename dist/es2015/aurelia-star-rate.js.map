@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/aurelia-star-rate.ts"],"names":[],"mappings":";;;;IAKA,mBAA0B,MAA8B;QACtD,MAAM,CAAC,eAAe,CAAC,4BAAQ,CAAC,UAAU,CAAC,sBAAsB,CAAC,CAAC,CAAC;IACtE,CAAC;IAFD,8BAEC;IAGD,4BAA2C","file":"aurelia-star-rate.js","sourceRoot":"src/"}
+{"version":3,"sources":["../src/aurelia-star-rate.ts"],"names":[],"mappings":";;;;IAKA,mBAA0B,MAA8B;QACtD,MAAM,CAAC,eAAe,CAAC,4BAAQ,CAAC,UAAU,CAAC,sBAAsB,CAAC,CAAC,CAAC;IACtE,CAAC;IAFD,8BAEC;IAGD,sBAAqC;IACrC,4BAA2C","file":"aurelia-star-rate.js","sourceRoot":"src/"}

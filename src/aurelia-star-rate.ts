@@ -8,4 +8,5 @@ export function configure(config: FrameworkConfiguration) {
 }
 
 
+export * from './elements/star-rate';
 export * from './elements/StarRateClicked';

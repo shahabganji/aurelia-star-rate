@@ -1,13 +1,19 @@
 # *aurelia-star-rate*
 
-  This is an **[Aurelia](http://aurelia.io/)** plugin in order for developers to create star-rate elements in their apps.
+  A rating plugin for **[Aurelia](http://aurelia.io/)** developers, inspired by [Css Tricks](https://css-tricks.com/star-ratings/). 
 
+* **Versions:**
+	* ```2.0.0``` : no dependency
+	* ```1.1.0``` : [bootstrap](https://getbootstrap.com/docs/3.3/getting-started/)
+	
+* **Breaking changes**
+ 
+	* The custom element name has changed from ```star-rate``` to ```au-star-rate``` :weary:
+  
 
 # 1. Installation
 
-* ##  Aurelia CLI
-
-  run the following command :
+ Run the following command :
 
   ```
   npm install aurelia-star-rate --save
@@ -18,9 +24,29 @@
   yarn add aurelia-star-rate
   ```
 
-  then update the ```aurelia.json``` with the following : 
+* ##	Webpack
 
+	Add ```aurelia-star-rate``` in your ```webpack.config``` file in which you have ```AureliaPlugin``` 
+	
+	```javascript
+    entry: {
+          'app': ['aurelia-bootstrapper', 'aurelia-star-rate']
+      }
+	``` 
+
+	then add the plugin in your ```main.ts``` or ```boot.ts``` file (can be also ```js``` files). 
+
+  ```javascript
+  .plugin(PLATFORM.moduleName("aurelia-star-rate")) 
   ```
+
+
+* ##  Aurelia CLI
+
+ 
+  Update the ```aurelia.json``` with the following : 
+
+  ```json
   {
       "name": "aurelia-star-rate",
       "path": "../node_modules/aurelia-star-rate/dist/amd",
@@ -31,26 +57,11 @@
    }
   ``` 
 
-  no need to mention that you should have added *[jquery](https://www.npmjs.com/package/jquery)* and *[bootstrap](https://www.npmjs.com/package/bootstrap)* 
-  in ```aurelia.json``` file
+  then add the plugin in your ```main.ts``` or ```boot.ts``` file (can be also ```js``` files). 
 
+  ```javascript
+  .plugin("aurelia-star-rate") 
   ```
-  "jquery",
-    {
-      "name": "bootstrap",
-      "path": "../node_modules/bootstrap/dist",
-      "main": "js/bootstrap.min",
-      "deps": ["jquery"],
-      "exports": "$",
-      "resources": [
-        "css/bootstrap.css"
-      ]
-    }
-  ```
-
-  then add the plugin in your ```main.ts``` or ```main.js``` file. 
-
-  ``` .plugin("aurelia-star-rate") ```
 
 * ## JSPM  
 
@@ -67,18 +78,41 @@
 
 # 2. Usage
 
-## Simple
+## HTML
+* **Simple**
 
-Using the control in your .html files is so simple ;-)
+	Using the control in your .html files is as simple as the following simple :wink:
 
-```
-<star-rate color="darkgoldenrod" read-only.bind="false" rate.bind="viewmodel.rate & validate" max-rate.bind="5"></star-rate>
-```
-keep in mind that once again you need the following line somwhere in your htmls : 
+	```html
+	<au-star-rate color="darkgoldenrod" read-only.bind="false" rate.bind="viewmodel.rate" max-rate.bind="5"></au-star-rate>
+	
+	```
+* **Integrating with other frameworks**
 
-```
-<require from="bootstrap/css/bootstrap.css"></require>
-```
+	
+	This plugin can be used side by side with other frameworks such as [font-awesome](http://fontawesome.io/) and [bootstrap](http://getbootstrap.com/), the plugin provides three properties which can be assigned by your own css classes.
+	
+		full-star
+		empty-star
+		half-star
+		
+	to use with [font-awesome](http://fontawesome.io/) for instance: 
+	
+	```html
+	<au-star-rate full-star="fa fa-star" empty-star="fa fa-star-o" half-star="fa fa-star-half-o" rate.bind="viewmodel.rate" max-rate.bind="5"></au-star-rate>
+	```
+	
+	bear in mind that this plugin accepts floting point values if and only if you provide a value for **```half-star```** css class property, otherwise it uses fixed point values. Similarly you can use bootstrap glyphicons.
+
+* **Right to Left support**
+
+	You can bind the **```rtl```** property to a **boolean** value:
+	
+	```html
+	<au-star-rate rtl.bind="true" rate.bind="viewmodel.rate" max-rate.bind="5"></au-star-rate>
+	```
+
+
 
 ## Events
 
@@ -87,14 +121,14 @@ You can handle the callback for star rate clicked or changed in two forms :
 1. **Globally** :
   When any of the star-rate elemnts in your dom which are not read only change the rate a ```StarRateClicked``` message will be published which has *```newRate```* and *```oldRate```* as its data 
 
-  ```
+  ```javascript
   import { EventAggregator } from 'aurelia-event-aggregator';
   import { StarRateClicked } from 'aurelia-star-rate';
 
   ```
   and then subscribe fo the message : 
 
-  ```
+  ```javascript
   @autoinject
   export class Welcome {
     
@@ -109,12 +143,13 @@ You can handle the callback for star rate clicked or changed in two forms :
 
 2. **Element based** : You can handle seperate event callbacks for individual star-rate elements 
  in your *```.html```* file use **```clicked.call```** as follows
-```
- <star-rate clicked.call="star_clicked(newRate,oldRate)" max-rate.bind="8" rate.one-way="6" read-only.bind="false" color="darkgoldenrod"></star-rate>
+
+```html
+ <au-star-rate clicked.call="star_clicked(newRate,oldRate)" max-rate.bind="8" rate.one-way="6" read-only.bind="false" color="darkgoldenrod"></au-star-rate>
 ```
 and then in your ```.js``` or ```.ts``` file add your event handler : 
 
-```
+```javascript
 private star_clicked(newRate, oldRate) {
     console.info(`clicked: Rate changed from  ${oldRate} to ${newRate}`);
 }

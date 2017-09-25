@@ -14,36 +14,68 @@ var StarRate = (function () {
     function StarRate(ea) {
         this.ea = ea;
         this.readOnly = true;
-        this.color = 'Black';
+        this.color = '#753B85';
+        this.rtl = false;
+        this.fullStar = 'au-star au-full-star';
+        this.halfStar = null;
+        this.emptyStar = 'au-star au-empty-star';
         this.mouseRate = -1;
+        this.showHalfStar = false;
     }
-    StarRate.prototype.mouseEnter = function (value) {
+    StarRate.prototype.mouseMove = function (event, index) {
         if (this.readOnly) {
             return;
         }
-        if (value > this.maxRate) {
-            this.mouseRate = this.maxRate;
+        if (this.halfStar) {
+            var calculatedIndex = this.rtl ? this.maxRate - index - 1 : index;
+            var controlLeft = this.rtl ? this.icons[calculatedIndex].getBoundingClientRect().right : this.icons[calculatedIndex].getBoundingClientRect().left;
+            var currentMousePosition = this.rtl ? controlLeft - event.clientX : event.clientX - controlLeft;
+            this.showHalfStar = currentMousePosition < (this.icons[calculatedIndex].clientWidth / 2);
         }
-        else {
-            this.mouseRate = value + 1;
-        }
+        this.mouseRate = index + 1 - (this.showHalfStar ? 0.5 : 0);
+        console.log(this.mouseRate);
     };
-    StarRate.prototype.setRate = function (value) {
+    StarRate.prototype.setRate = function (index) {
         if (this.readOnly) {
             return;
         }
-        this.rate = value + 1;
+        var oldValue = this.rate;
+        this.rate = index + 1 - (this.showHalfStar ? 0.5 : 0);
         if (this.clicked) {
-            this.clicked({ newRate: this.rate, oldRate: value });
+            this.clicked({ newRate: this.rate, oldRate: oldValue });
         }
-        this.ea.publish(new StarRateClicked_1.StarRateClicked(this.rate, value));
+        this.ea.publish(new StarRateClicked_1.StarRateClicked(this.rate, oldValue));
     };
     StarRate.prototype.mouseLeft = function () {
         if (this.readOnly) {
             return;
         }
+        this.showHalfStar = false;
         this.mouseRate = -1;
     };
+    Object.defineProperty(StarRate.prototype, "currentValue", {
+        get: function () {
+            var x = (this.mouseRate != -1 ? this.mouseRate : this.rate);
+            return x;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StarRate.prototype, "hasFloatingPoint", {
+        get: function () {
+            var mode = this.currentValue % 1;
+            return mode > 0 && mode < 1;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(StarRate.prototype, "fixedPoint", {
+        get: function () {
+            return Math.floor(this.currentValue);
+        },
+        enumerable: true,
+        configurable: true
+    });
     return StarRate;
 }());
 __decorate([
@@ -64,10 +96,46 @@ __decorate([
 ], StarRate.prototype, "color", void 0);
 __decorate([
     aurelia_framework_1.bindable,
+    __metadata("design:type", Boolean)
+], StarRate.prototype, "rtl", void 0);
+__decorate([
+    aurelia_framework_1.bindable,
+    __metadata("design:type", String)
+], StarRate.prototype, "fullStar", void 0);
+__decorate([
+    aurelia_framework_1.bindable,
+    __metadata("design:type", String)
+], StarRate.prototype, "halfStar", void 0);
+__decorate([
+    aurelia_framework_1.bindable,
+    __metadata("design:type", String)
+], StarRate.prototype, "emptyStar", void 0);
+__decorate([
+    aurelia_framework_1.bindable,
     __metadata("design:type", Object)
 ], StarRate.prototype, "clicked", void 0);
+__decorate([
+    aurelia_framework_1.children('i'),
+    __metadata("design:type", Array)
+], StarRate.prototype, "icons", void 0);
+__decorate([
+    aurelia_framework_1.computedFrom('mouseRate', 'rate'),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], StarRate.prototype, "currentValue", null);
+__decorate([
+    aurelia_framework_1.computedFrom('currentValue'),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], StarRate.prototype, "hasFloatingPoint", null);
+__decorate([
+    aurelia_framework_1.computedFrom('currentValue'),
+    __metadata("design:type", Object),
+    __metadata("design:paramtypes", [])
+], StarRate.prototype, "fixedPoint", null);
 StarRate = __decorate([
-    aurelia_framework_1.autoinject,
+    aurelia_framework_1.customElement('au-star-rate'),
+    aurelia_framework_1.inject(aurelia_event_aggregator_1.EventAggregator),
     __metadata("design:paramtypes", [aurelia_event_aggregator_1.EventAggregator])
 ], StarRate);
 exports.StarRate = StarRate;
